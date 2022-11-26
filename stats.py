@@ -43,15 +43,13 @@ class Temp:
         self.board = 0
 
 class Data:
-    def __init__(self):
-       
+    def __init__(self):       
         self.voltage = 0
         self.power = Power()
         self.current = Current()
         self.temp = Temp()
 
     def getData(self):
-       
         self.command = subprocess.Popen(['tegrastats'], stdout=subprocess.PIPE)
         self.line = (subprocess.check_output(('head', '-n', '1'), stdin=self.command.stdout)).decode().split(" ")[21:41]
 
